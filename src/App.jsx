@@ -1,14 +1,15 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter } from 'react-router-dom'
+import AppRoutes from './routes/AppRoutes'
+import Navbar from './components/common/Navbar'
+import Footer from './components/common/Footer'
 
-function App() {
-  return (
-    <h1 className="text-3xl font-bold text-blue-600">
-      Rental App 🚀
-    </h1>
-  )
+
+export default function App() {
+return (
+<BrowserRouter>
+<Navbar />
+<AppRoutes />
+<Footer />
+</BrowserRouter>
+)
 }
-
-export default App
