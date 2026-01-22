@@ -1,6 +1,10 @@
-import { Star, Users, Gauge, Settings } from "lucide-react";
 
-// ✅ Import images correctly
+
+import React from "react"
+import { useState } from "react"
+import { Star, Users, Gauge, Settings } from "lucide-react"
+import RentalPopup from "./RentalPopup"
+
 import bmwImg from "../../assets/images/car-bmw.jpg";
 import suvImg from "../../assets/images/car-suv.jpg";
 import lamboImg from "../../assets/images/car-lamborghini.jpg";
@@ -54,7 +58,16 @@ const carDeals = [
 ];
 
 export default function CarDealsSection() {
+  const [showPopup, setShowPopup] = useState(false)
+  const [selectedCar, setSelectedCar] = useState(null)
+
+  const handleRentNow = (car) => {
+    setSelectedCar(car)
+    setShowPopup(true)
+  }
+
   return (
+    <>
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -121,7 +134,10 @@ export default function CarDealsSection() {
                     </span>
                     <span className="text-sm text-gray-500"> / day</span>
                   </div>
-                  <button className="px-4 py-2 text-xs rounded-full border hover:bg-gray-100 transition">
+                  <button 
+                    onClick={() => handleRentNow(car)}
+                    className="px-4 py-2 text-xs rounded-full border hover:bg-gray-100 transition"
+                  >
                     Rent Now →
                   </button>
                 </div>
@@ -137,6 +153,36 @@ export default function CarDealsSection() {
           </button>
         </div>
       </div>
-    </section>
+      
+      {/* Rental Popup */}
+      {showPopup && selectedCar && (
+        <RentalPopup 
+          selectedCar={selectedCar} 
+          onClose={() => setShowPopup(false)} 
+        />
+      )}
+      </section>
+    </>
   );
+}
+
+// QuickAction Helper Component
+function QuickAction({ 
+  icon, 
+  title, 
+  subtitle, 
+  iconBg, 
+  iconColor 
+}) {
+  return (
+    <div className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-gray-50 cursor-pointer">
+      <div className={`w-8 h-8 ${iconBg} rounded-lg flex items-center justify-center ${iconColor}`}>
+        {icon}
+      </div>
+      <div>
+        <p className="text-sm font-medium text-[#1f2937]">{title}</p>
+        <p className="text-xs text-[#9ca3af]">{subtitle}</p>
+      </div>
+    </div>
+  )
 }

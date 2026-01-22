@@ -1,5 +1,11 @@
 import { Play } from "lucide-react";
 import heroPorsche from "../assets/images/hero-porsche.jpg";
+import ferrariLogo from "../assets/logo/ferrari.svg";
+import mercedesLogo from "../assets/logo/mercedes.svg";
+import bmwLogo from "../assets/logo/bmw.svg";
+import bentleyLogo from "../assets/logo/bentley.svg";
+import jaguarLogo from "../assets/logo/jaguar.svg";
+import chevroletLogo from "../assets/logo/chevrolet.svg";
 
 import FleetSection from "../components/vehicle/FleetSection";
 import BookingForm from "../components/booking/BookingForm";
@@ -9,13 +15,12 @@ import ServicesSection from "../components/booking/ServicesSection";
 import TestimonialsSection from "../components/booking/TestimonialsSection";
 
 const brandLogos = [
-  { name: "Ferrari", icon: "🏎️" },
-  { name: "Alfa Romeo", icon: "⚙️" },
-  { name: "Tesla", icon: "⚡" },
-  { name: "MINI", icon: "🚗" },
-  { name: "Porsche", icon: "🛞" },
-  { name: "Mercedes", icon: "⭐" },
-  { name: "Lexus", icon: "🔷" },
+  { name: "Ferrari", logo: ferrariLogo },
+  { name: "Mercedes", logo: mercedesLogo },
+  { name: "BMW", logo: bmwLogo },
+  { name: "Bentley", logo: bentleyLogo },
+  { name: "Jaguar", logo: jaguarLogo },
+  { name: "Chevrolet", logo: chevroletLogo },
 ];
 
 export default function Home() {
@@ -71,7 +76,11 @@ export default function Home() {
       className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition"
       title={brand.name}
     >
-      <span className="text-xl text-gray-500">{brand.icon}</span>
+      <img 
+        src={brand.logo} 
+        alt={brand.name}
+        className="w-8 h-8 object-contain"
+      />
     </div>
   ))}
 
