@@ -44,7 +44,7 @@ export default function Home() {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
                 Premium <br />
                 Car Rental <br />
-                <span className="text-emerald-600">in New York</span>
+                <span className="text-emerald-600">in Sri Lanka</span>
               </h1>
               <p className="mt-6 text-gray-600 max-w-md mx-auto lg:mx-0 leading-relaxed">
                 Don't deny yourself the pleasure of driving the best premium cars from around the world—here and now.
