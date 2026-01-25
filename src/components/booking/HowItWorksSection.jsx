@@ -29,7 +29,8 @@ export default function HowItWorksSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-black">
+          <p className="text-sm uppercase tracking-widest text-emerald-600 font-medium mb-4">Process</p>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">
             How it works
           </h2>
           <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
@@ -46,19 +47,14 @@ export default function HowItWorksSection() {
                 <div className="hidden lg:block absolute top-8 left-1/2 w-full h-0.5 bg-gray-300" />
               )}
               
-              <div className="relative bg-white rounded-2xl p-6 border border-gray-200 text-center">
-                {/* Step Number */}
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-black text-white rounded-full flex items-center justify-center text-xs font-bold">
+              <div className="relative bg-white rounded-2xl p-6 border border-gray-200 text-center hover:shadow-lg hover:border-emerald-200 transition-all">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-emerald-600 text-white rounded-full flex items-center justify-center text-xs font-bold">
                   {index + 1}
                 </div>
-                
-                {/* Icon */}
-                <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
-                  <step.icon className="w-7 h-7 text-black" />
+                <div className="w-16 h-16 mx-auto mb-4 bg-emerald-50 rounded-full flex items-center justify-center">
+                  <step.icon className="w-7 h-7 text-emerald-600" />
                 </div>
-                
-                {/* Content */}
-                <h3 className="font-semibold text-black mb-2">{step.title}</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">{step.title}</h3>
                 <p className="text-sm text-gray-500 leading-relaxed">{step.description}</p>
               </div>
             </div>

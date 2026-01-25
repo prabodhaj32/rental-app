@@ -1,188 +1,106 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Star, Users, Gauge, Settings } from 'lucide-react';
+import RentalPopup from './RentalPopup';
+import { getDealVehicles } from '../../data/vehicles';
 
-
-import React from "react"
-import { useState } from "react"
-import { Star, Users, Gauge, Settings } from "lucide-react"
-import RentalPopup from "./RentalPopup"
-
-import bmwImg from "../../assets/images/car-bmw.jpg";
-import suvImg from "../../assets/images/car-suv.jpg";
-import lamboImg from "../../assets/images/car-lamborghini.jpg";
-import audiImg from "../../assets/images/car-audi.jpg";
-
-const carDeals = [
-  {
-    id: 1,
-    name: "BMW M8 COUPE 2023",
-    image: bmwImg,
-    rating: 4.8,
-    reviews: 2453,
-    passengers: 4,
-    transmission: "Automatic",
-    speed: "280 km/h",
-    price: 2000,
-  },
-  {
-    id: 2,
-    name: "FORTUNER GX",
-    image: suvImg,
-    rating: 4.8,
-    reviews: 1232,
-    passengers: 7,
-    transmission: "Automatic",
-    speed: "180 km/h",
-    price: 2500,
-  },
-  {
-    id: 3,
-    name: "Lamborghini Huracan",
-    image: lamboImg,
-    rating: 4.9,
-    reviews: 892,
-    passengers: 2,
-    transmission: "Automatic",
-    speed: "325 km/h",
-    price: 3000,
-  },
-  {
-    id: 4,
-    name: "Audi R8",
-    image: audiImg,
-    rating: 4.7,
-    reviews: 1567,
-    passengers: 2,
-    transmission: "Automatic",
-    speed: "330 km/h",
-    price: 3200,
-  },
-];
+const carDeals = getDealVehicles();
 
 export default function CarDealsSection() {
-  const [showPopup, setShowPopup] = useState(false)
-  const [selectedCar, setSelectedCar] = useState(null)
+  const [showPopup, setShowPopup] = useState(false);
+  const [selectedCar, setSelectedCar] = useState(null);
 
-  const handleRentNow = (car) => {
-    setSelectedCar(car)
-    setShowPopup(true)
-  }
+  const handleRentNow = (e, car) => {
+    e.preventDefault();
+    setSelectedCar(car);
+    setShowPopup(true);
+  };
 
   return (
     <>
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-black">
-            Popular Car Rentals Deals
-          </h2>
-          <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-            Ranging from elegant sedans to powerful sports cars, all carefully selected
-            to provide the ultimate driving experience.
-          </p>
-        </div>
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-sm uppercase tracking-widest text-emerald-600 font-medium mb-4">
+              Best Deals
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+              Popular Car Rentals
+            </h2>
+            <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+              From elegant sedans to powerful sports cars—carefully selected for the ultimate driving experience.
+            </p>
+          </div>
 
-        {/* Car Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {carDeals.map((car) => (
-            <div
-              key={car.id}
-              className="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition"
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {carDeals.map((car) => (
+              <div
+                key={car.id}
+                className="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-xl hover:border-emerald-200 transition-all duration-300"
+              >
+                <Link to={`/vehicles/${car.id}`} className="block">
+                  <div className="aspect-[4/3] overflow-hidden bg-gray-100">
+                    <img
+                      src={car.image}
+                      alt={car.name}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                </Link>
+                <div className="p-4">
+                  <Link to={`/vehicles/${car.id}`}>
+                    <h3 className="font-semibold text-gray-900 hover:text-emerald-600 transition-colors">{car.name}</h3>
+                  </Link>
+                  <div className="flex items-center gap-1 mt-2">
+                    <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    <span className="text-sm font-medium">{car.rating}</span>
+                    <span className="text-sm text-gray-500">({car.reviews} reviews)</span>
+                  </div>
+                  <div className="grid grid-cols-3 gap-2 mt-4 text-xs text-gray-500">
+                    <div className="flex items-center gap-1">
+                      <Users className="w-3 h-3" />
+                      <span>{car.passengers}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Settings className="w-3 h-3" />
+                      <span>{car.transmission}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Gauge className="w-3 h-3" />
+                      <span>{car.speed}</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
+                    <div>
+                      <span className="text-xl font-bold text-gray-900">${car.price.toLocaleString()}</span>
+                      <span className="text-sm text-gray-500"> / day</span>
+                    </div>
+                    <button
+                      onClick={(e) => handleRentNow(e, car)}
+                      className="px-4 py-2 text-sm font-medium rounded-xl border border-emerald-500 text-emerald-600 hover:bg-emerald-50 transition-colors"
+                    >
+                      Rent Now →
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <Link
+              to="/vehicles"
+              className="text-emerald-600 font-medium hover:text-emerald-700 hover:underline transition-colors"
             >
-              {/* Image */}
-              <div className="aspect-[4/3] overflow-hidden bg-gray-100">
-                <img
-                  src={car.image}
-                  alt={car.name}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="p-4">
-                <h3 className="font-semibold text-black">{car.name}</h3>
-
-                {/* Rating */}
-                <div className="flex items-center gap-1 mt-2">
-                  <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  <span className="text-sm font-medium">{car.rating}</span>
-                  <span className="text-sm text-gray-500">
-                    ({car.reviews} reviews)
-                  </span>
-                </div>
-
-                {/* Specs */}
-                <div className="grid grid-cols-3 gap-2 mt-4 text-xs text-gray-500">
-                  <div className="flex items-center gap-1">
-                    <Users className="w-3 h-3" />
-                    <span>{car.passengers}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Settings className="w-3 h-3" />
-                    <span>{car.transmission}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Gauge className="w-3 h-3" />
-                    <span>{car.speed}</span>
-                  </div>
-                </div>
-
-                {/* Price */}
-                <div className="flex items-center justify-between mt-4 pt-4 border-t">
-                  <div>
-                    <span className="text-xl font-bold text-black">
-                      ${car.price.toLocaleString()}
-                    </span>
-                    <span className="text-sm text-gray-500"> / day</span>
-                  </div>
-                  <button 
-                    onClick={() => handleRentNow(car)}
-                    className="px-4 py-2 text-xs rounded-full border hover:bg-gray-100 transition"
-                  >
-                    Rent Now →
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
+              Show all vehicles →
+            </Link>
+          </div>
         </div>
-
-        {/* View All */}
-        <div className="text-center mt-10">
-          <button className="text-gray-500 hover:text-black transition">
-            Show all vehicles →
-          </button>
-        </div>
-      </div>
-      
-      {/* Rental Popup */}
-      {showPopup && selectedCar && (
-        <RentalPopup 
-          selectedCar={selectedCar} 
-          onClose={() => setShowPopup(false)} 
-        />
-      )}
       </section>
+
+      {showPopup && selectedCar && (
+        <RentalPopup selectedCar={selectedCar} onClose={() => setShowPopup(false)} />
+      )}
     </>
   );
-}
-
-// QuickAction Helper Component
-function QuickAction({ 
-  icon, 
-  title, 
-  subtitle, 
-  iconBg, 
-  iconColor 
-}) {
-  return (
-    <div className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-gray-50 cursor-pointer">
-      <div className={`w-8 h-8 ${iconBg} rounded-lg flex items-center justify-center ${iconColor}`}>
-        {icon}
-      </div>
-      <div>
-        <p className="text-sm font-medium text-[#1f2937]">{title}</p>
-        <p className="text-xs text-[#9ca3af]">{subtitle}</p>
-      </div>
-    </div>
-  )
 }

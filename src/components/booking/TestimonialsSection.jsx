@@ -44,10 +44,11 @@ export default function TestimonialsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-black">
-            What Our Customers Say About Us
+          <p className="text-sm uppercase tracking-widest text-emerald-600 font-medium mb-4">Testimonials</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+            What Our Customers Say
           </h2>
-          <p className="mt-4 text-gray-600">
+          <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
             Here are some comments from users.
           </p>
         </div>
@@ -57,11 +58,10 @@ export default function TestimonialsSection() {
           {testimonials.map((t) => (
             <div
               key={t.id}
-              className="bg-white rounded-2xl p-6 border border-gray-200"
+              className="bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-lg hover:border-emerald-200 transition-all"
             >
-              {/* User */}
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center font-semibold">
+                <div className="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-semibold">
                   {t.avatar}
                 </div>
                 <div>

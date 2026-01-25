@@ -24,7 +24,8 @@ export default function ServicesSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-black">
+          <p className="text-sm uppercase tracking-widest text-emerald-600 font-medium mb-4">Benefits</p>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">
             Our Services & Benefits
           </h2>
           <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
@@ -37,12 +38,12 @@ export default function ServicesSection() {
           {services.map((service) => (
             <div
               key={service.title}
-              className="text-center p-8 rounded-2xl bg-gray-50 hover:bg-gray-100 transition-colors"
+              className="text-center p-8 rounded-2xl bg-gray-50 hover:bg-emerald-50/50 border border-transparent hover:border-emerald-200 transition-all"
             >
-              <div className="w-16 h-16 mx-auto mb-6 bg-black rounded-full flex items-center justify-center">
+              <div className="w-16 h-16 mx-auto mb-6 bg-emerald-600 rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-600/25">
                 <service.icon className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-black mb-3">{service.title}</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">{service.title}</h3>
               <p className="text-gray-500 leading-relaxed">{service.description}</p>
             </div>
           ))}

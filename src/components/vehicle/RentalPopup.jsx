@@ -1,29 +1,17 @@
 import React, { useState } from "react"
 import { X, MapPin, Phone, BarChartBig as ChartPie, Shield, CreditCard, Mic, Paperclip, Smile, Send, Zap, Calendar, RotateCcw, User, LayoutGrid, Car, ChevronLeft, ChevronRight, Expand, Star, Check, Clock, Fuel, Luggage, Snowflake, Users as UserIcon, Settings } from "lucide-react"
 
-// Add custom CSS to hide scrollbar
-const style = `
-  .scrollbar-hide {
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
-  }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;  /* Safari and Chrome */
-  }
-`
-
 export default function RentalPopup({ selectedCar, onClose }) {
-  const [showPricing, setShowPricing] = useState(false)
-  const [showRentalPeriod, setShowRentalPeriod] = useState(false)
-  const [showCustomerInfo, setShowCustomerInfo] = useState(false)
-  const [showAddons, setShowAddons] = useState(false)
-  const [showTerms, setShowTerms] = useState(false)
+  const [showPricing, setShowPricing] = useState(false);
+  const [showRentalPeriod, setShowRentalPeriod] = useState(false);
+  const [showCustomerInfo, setShowCustomerInfo] = useState(false);
+  const [showAddons, setShowAddons] = useState(false);
+  const [showTerms, setShowTerms] = useState(false);
 
   return (
     <>
-      <style>{style}</style>
-      <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-        <div className="bg-white rounded-3xl w-full max-w-7xl max-h-[95vh] overflow-y-auto scrollbar-hide">
+      <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
+        <div className="bg-white rounded-3xl w-full max-w-7xl max-h-[95vh] overflow-y-auto scrollbar-hide shadow-2xl">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b">
           <h2 className="text-2xl font-bold text-[#1f2937]">Complete Your Rental</h2>
@@ -62,7 +50,7 @@ export default function RentalPopup({ selectedCar, onClose }) {
                       <h4 className="font-bold text-lg text-[#1f2937]">{selectedCar.name}</h4>
                       <p className="text-sm text-[#6b7280]">Luxury Sports Car</p>
                       <div className="flex items-center gap-2 mt-1">
-                        <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">Available</span>
+                        <span className="px-2 py-1 bg-emerald-100 text-emerald-700 text-xs rounded-full">Available</span>
                         <div className="flex items-center gap-1">
                           <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                           <span className="text-sm font-medium">{selectedCar.rating}</span>
@@ -102,10 +90,10 @@ export default function RentalPopup({ selectedCar, onClose }) {
                 <div className="grid grid-cols-2 gap-4">
                   <button 
                     onClick={() => setShowPricing(true)}
-                    className="p-4 bg-white rounded-xl border border-gray-200 hover:border-[#16a34a] transition flex items-center gap-3"
+                    className="p-4 bg-white rounded-xl border border-gray-200 hover:border-emerald-500 transition flex items-center gap-3"
                   >
-                    <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                      <CreditCard className="w-5 h-5 text-green-600" />
+                    <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+                      <CreditCard className="w-5 h-5 text-emerald-600" />
                     </div>
                     <div className="text-left">
                       <p className="font-medium text-sm">Pricing Details</p>
@@ -115,7 +103,7 @@ export default function RentalPopup({ selectedCar, onClose }) {
 
                   <button 
                     onClick={() => setShowRentalPeriod(true)}
-                    className="p-4 bg-white rounded-xl border border-gray-200 hover:border-[#16a34a] transition flex items-center gap-3"
+                    className="p-4 bg-white rounded-xl border border-gray-200 hover:border-emerald-500 transition flex items-center gap-3"
                   >
                     <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
                       <Calendar className="w-5 h-5 text-blue-600" />
@@ -128,7 +116,7 @@ export default function RentalPopup({ selectedCar, onClose }) {
 
                   <button 
                     onClick={() => setShowCustomerInfo(true)}
-                    className="p-4 bg-white rounded-xl border border-gray-200 hover:border-[#16a34a] transition flex items-center gap-3"
+                    className="p-4 bg-white rounded-xl border border-gray-200 hover:border-emerald-500 transition flex items-center gap-3"
                   >
                     <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
                       <User className="w-5 h-5 text-purple-600" />
@@ -141,7 +129,7 @@ export default function RentalPopup({ selectedCar, onClose }) {
 
                   <button 
                     onClick={() => setShowAddons(true)}
-                    className="p-4 bg-white rounded-xl border border-gray-200 hover:border-[#16a34a] transition flex items-center gap-3"
+                    className="p-4 bg-white rounded-xl border border-gray-200 hover:border-emerald-500 transition flex items-center gap-3"
                   >
                     <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
                       <Zap className="w-5 h-5 text-orange-600" />
@@ -154,7 +142,7 @@ export default function RentalPopup({ selectedCar, onClose }) {
 
                   <button 
                     onClick={() => setShowTerms(true)}
-                    className="p-4 bg-white rounded-xl border border-gray-200 hover:border-[#16a34a] transition flex items-center gap-3"
+                    className="p-4 bg-white rounded-xl border border-gray-200 hover:border-emerald-500 transition flex items-center gap-3"
                   >
                     <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
                       <Shield className="w-5 h-5 text-gray-600" />
@@ -165,7 +153,7 @@ export default function RentalPopup({ selectedCar, onClose }) {
                     </div>
                   </button>
 
-                  <button className="p-4 bg-white rounded-xl border border-gray-200 hover:border-[#16a34a] transition flex items-center gap-3">
+                  <button className="p-4 bg-white rounded-xl border border-gray-200 hover:border-emerald-500 transition flex items-center gap-3">
                     <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
                       <Phone className="w-5 h-5 text-red-600" />
                     </div>
@@ -198,7 +186,7 @@ export default function RentalPopup({ selectedCar, onClose }) {
                     title="Book a rent" 
                     subtitle="5 min"
                     iconBg="bg-[#e8f5e9]"
-                    iconColor="text-[#16a34a]"
+                    iconColor="text-emerald-600"
                   />
                   <QuickAction 
                     icon={<ChartPie className="w-4 h-4" />} 
@@ -211,7 +199,7 @@ export default function RentalPopup({ selectedCar, onClose }) {
                     icon={<Shield className="w-4 h-4" />} 
                     title="Insurance" 
                     subtitle="Pick a Plan"
-                    iconBg="bg-[#16a34a]"
+                    iconBg="bg-emerald-600"
                     iconColor="text-white"
                   />
                   <QuickAction 
@@ -219,7 +207,7 @@ export default function RentalPopup({ selectedCar, onClose }) {
                     title="Payment" 
                     subtitle="Calculate"
                     iconBg="bg-[#e8f5e9]"
-                    iconColor="text-[#16a34a]"
+                    iconColor="text-emerald-600"
                   />
                 </div>
 
@@ -237,7 +225,7 @@ export default function RentalPopup({ selectedCar, onClose }) {
                   <button className="w-10 h-10 bg-[#f3f4f6] rounded-xl flex items-center justify-center">
                     <Smile className="w-4 h-4 text-[#6b7280]" />
                   </button>
-                  <button className="flex-1 bg-[#16a34a] text-white rounded-xl py-2.5 px-4 flex items-center justify-center gap-2 text-sm font-medium">
+                  <button className="flex-1 bg-emerald-600 text-white rounded-xl py-2.5 px-4 flex items-center justify-center gap-2 text-sm font-medium hover:bg-emerald-700 transition">
                     Send
                     <Send className="w-4 h-4" />
                   </button>
@@ -254,7 +242,7 @@ export default function RentalPopup({ selectedCar, onClose }) {
             >
               Cancel
             </button>
-            <button className="flex-1 px-8 py-3 bg-[#16a34a] text-white rounded-lg font-medium hover:bg-[#15803d] transition">
+            <button className="flex-1 px-8 py-3 bg-emerald-600 text-white rounded-lg font-medium hover:bg-emerald-700 transition">
               Quick Book - ${selectedCar.price.toLocaleString()}/day
             </button>
           </div>
@@ -321,7 +309,7 @@ function QuickAction({
 // Modal Components
 function PricingModal({ selectedCar, onClose }) {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 bg-black/50 z-[60] flex items-center justify-center p-4 backdrop-blur-sm">
       <div className="bg-white rounded-3xl w-full max-w-md p-6">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-xl font-bold text-[#1f2937]">Pricing Details</h3>
@@ -349,7 +337,7 @@ function PricingModal({ selectedCar, onClose }) {
           <div className="border-t pt-3">
             <div className="flex justify-between">
               <span className="font-bold">Total (1 day)</span>
-              <span className="font-bold text-[#16a34a]">${(selectedCar.price + 200 + 50 + 30).toLocaleString()}</span>
+              <span className="font-bold text-emerald-600">${(selectedCar.price + 200 + 50 + 30).toLocaleString()}</span>
             </div>
           </div>
         </div>
@@ -360,7 +348,7 @@ function PricingModal({ selectedCar, onClose }) {
 
 function RentalPeriodModal({ onClose }) {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 bg-black/50 z-[60] flex items-center justify-center p-4 backdrop-blur-sm">
       <div className="bg-white rounded-3xl w-full max-w-md p-6">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-xl font-bold text-[#1f2937]">Rental Period</h3>
@@ -389,7 +377,7 @@ function RentalPeriodModal({ onClose }) {
 
 function CustomerInfoModal({ onClose }) {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 bg-black/50 z-[60] flex items-center justify-center p-4 backdrop-blur-sm">
       <div className="bg-white rounded-3xl w-full max-w-md p-6">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-xl font-bold text-[#1f2937]">Customer Information</h3>
@@ -418,7 +406,7 @@ function CustomerInfoModal({ onClose }) {
 
 function AddonsModal({ onClose }) {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 bg-black/50 z-[60] flex items-center justify-center p-4 backdrop-blur-sm">
       <div className="bg-white rounded-3xl w-full max-w-md p-6">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-xl font-bold text-[#1f2937]">Optional Add-ons</h3>
@@ -428,19 +416,19 @@ function AddonsModal({ onClose }) {
         </div>
         <div className="space-y-3">
           <label className="flex items-center gap-3 cursor-pointer">
-            <input type="checkbox" className="w-4 h-4 text-[#16a34a] rounded" />
+            <input type="checkbox" className="w-4 h-4 text-emerald-600 rounded" />
             <span>Additional Driver Required (+$50/day)</span>
           </label>
           <label className="flex items-center gap-3 cursor-pointer">
-            <input type="checkbox" className="w-4 h-4 text-[#16a34a] rounded" />
+            <input type="checkbox" className="w-4 h-4 text-emerald-600 rounded" />
             <span>Full Insurance Coverage (+$30/day)</span>
           </label>
           <label className="flex items-center gap-3 cursor-pointer">
-            <input type="checkbox" className="w-4 h-4 text-[#16a34a] rounded" />
+            <input type="checkbox" className="w-4 h-4 text-emerald-600 rounded" />
             <span>GPS Navigation (+$10/day)</span>
           </label>
           <label className="flex items-center gap-3 cursor-pointer">
-            <input type="checkbox" className="w-4 h-4 text-[#16a34a] rounded" />
+            <input type="checkbox" className="w-4 h-4 text-emerald-600 rounded" />
             <span>Child Seat (+$15/day)</span>
           </label>
         </div>
@@ -451,7 +439,7 @@ function AddonsModal({ onClose }) {
 
 function TermsModal({ onClose }) {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 bg-black/50 z-[60] flex items-center justify-center p-4 backdrop-blur-sm">
       <div className="bg-white rounded-3xl w-full max-w-md p-6">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-xl font-bold text-[#1f2937]">Rental Terms</h3>
