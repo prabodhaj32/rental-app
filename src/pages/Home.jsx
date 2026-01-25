@@ -100,9 +100,9 @@ export default function Home() {
         </div>
       </section>
 
-      <div id="booking-form">
+      {/* <div id="booking-form">
         <BookingForm />
-      </div>
+      </div> */}
       <FleetSection />
       <CarDealsSection />
       <HowItWorksSection />
